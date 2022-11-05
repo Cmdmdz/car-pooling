@@ -1,0 +1,9 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://root:FqYShuUniLSPWXWD@cluster0.9b76fn3.mongodb.net/car-pooling?retryWrites=true&w=majority
+
+
+logging:
+  level:
+    root: INFO
