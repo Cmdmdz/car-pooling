@@ -9,11 +9,18 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class SignInRequest {
+public class TravelRequest {
 
     @NotBlank
     private String studentId;
-
     @NotBlank
-    private String password;
+    private String name;
+    @NotBlank
+    private String origin;
+    @NotBlank
+    private String destination;
+    @NotBlank
+    private String datetime;
+
+    private String detail;
 }

@@ -4,6 +4,8 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+
 @Document(collection = "CUSTOMER")
 @Getter
 @Setter
@@ -14,12 +16,11 @@ public class Customer {
 
 
     @Id
-    private String customerId;
-    private String fistName;
-    private String lastName;
+    private String studentId;
+    private String name;
     private String address;
     private String mobileNumber;
     private String email;
     private String password;
-    private String studentId;
+    private Boolean isDiver;
 }

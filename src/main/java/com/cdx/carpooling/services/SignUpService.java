@@ -1,6 +1,6 @@
 package com.cdx.carpooling.services;
 
-import com.cdx.carpooling.model.request.CustomerRequest;
+import com.cdx.carpooling.model.request.SignUpRequest;
 import com.cdx.carpooling.model.response.CustomerResponse;
 import com.cdx.carpooling.repositories.CustomerRepository;
 import com.cdx.carpooling.repositories.dao.Customer;
@@ -18,26 +18,22 @@ public class SignUpService {
 
     private final CustomerRepository customerRepository;
 
-    public Mono<CustomerResponse> execute(CustomerRequest request){
+    public Mono<CustomerResponse> execute(SignUpRequest request){
 
-        return customerRepository.existsByEmail(request.getEmail())
+        return customerRepository.existsByStudentId(request.getStudentId())
                 .flatMap(res -> {
 
                     if (Boolean.TRUE.equals(res)){
                         return Mono.error(new ResponseStatusException(HttpStatus.CONFLICT, ERROR_CUSTOMER_DUPLICATE));
                     }
-
                     return customerRepository.save(Customer.builder()
-                                    .fistName(request.getFistName())
-                                    .lastName(request.getLastName())
-                                    .email(request.getEmail())
-                                    .address(request.getAddress())
+                                    .name(request.getName())
+                                    .mobileNumber(request.getMobileNumber())
                                     .studentId(request.getStudentId())
                                     .password(request.getPassword())
+                                    .isDiver(false)
                                     .build())
                             .flatMap(customer -> Mono.just(CustomerResponse.builder()
-                                            .customerId(customer.getCustomerId())
-                                            .password(customer.getPassword())
                                     .build()));
                 });
     }

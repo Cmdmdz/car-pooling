@@ -1,6 +1,9 @@
 package com.cdx.carpooling.model.response;
 
+import com.cdx.carpooling.repositories.dao.Travel;
 import lombok.*;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -10,12 +13,12 @@ import lombok.*;
 public class CustomerResponse {
 
     private String customerId;
-    private String fistName;
-    private String lastName;
+    private String name;
     private String address;
     private String mobileNumber;
     private String email;
     private String password;
     private String studentId;
-    private String auth;
+    private Boolean isDiver;
+    private List<Travel> travelList;
 }
